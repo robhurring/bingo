@@ -1,0 +1,24 @@
+<div class='form'>
+  <h2>Create a NEW Game!</h2>
+  <p>You can create a custom Bingo! game to play with your friends!</p>
+    
+  <form action="<%= url_for '/new_game' %>" method="post" accept-charset="utf-8">
+    <label for="game_name" class='<%= 'with_errors' if @game.errors.on(:name) %>'>
+      Game Name<br/>
+      <small>Something memorable :)</small>
+    </label>
+    <input type="text" name="game[name]" value="<%= @game.name %>" id="game_name">
+    <div class='form_error'><%= Array(@game.errors.on(:name)).join("<br/>") %></div>
+    <br clear='both' />
+    
+    <label for="game_words" class='<%= 'with_errors' if @game.errors.on(:words) %>'>
+      Game Words<br/>
+      <small>You need 25 words for a game.</small>
+    </label>
+    <textarea name="game[words]" rows="8" class='styled'><%= @game.words.join("\n") %></textarea>
+    <div class='form_error'><%= Array(@game.errors.on(:words)).join("<br/>") %></div>
+
+    <input type="submit" class='submit' value="Create Game &rarr;">
+    <br clear='both' />
+  </form>  
+</div>

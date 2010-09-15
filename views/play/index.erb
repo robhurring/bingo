@@ -1,0 +1,34 @@
+<h1><%=h @game.name %></h1>
+
+<div class='block'>
+  <strong>Public Game URL:</strong>
+  <small>Pass this URL to your friends to start playing the game.</small>
+  <p><%= link_to url_for('/play/%s' % @game.token, :mode => :full), url_for('/play/%s' % @game.token, :mode => :full) %></p>
+</div>
+
+<% if @game.won? %>
+  <h3>This game has been won by <%=h @game.winner %>!</h3>
+  <p>This game is over and will be automatically swept up. If you would like to start a new game, <%= link_to 'click here', '/new_game' %>.</p>
+<% else %>
+
+  <div class='block'>
+    <strong>Create a NEW Player Card</strong>
+    <small>To start playing Bingo! you need your own card. Generate one below! If you already created a card, select it from below to start playing.</small>
+    <p><%= link_to 'I need a card!', '/play/%s/new_card' % @game.token %></p>
+  </div>
+
+  <% if @game.cards.empty? %>
+    <h3>You don't have any active cards!</h3>
+    <p>To start playing, click the "Make me a card!" link below.</p>
+  <% else %>
+    <h3>Current Players</h3>
+    <ul>
+      <% @game.cards.each do |card| %>
+        <li><%= link_to h(card.name), '/play/%s/%d' % [@game.token, card.id] %> &ndash; <%= card.created_at.strftime '%m/%d/%Y' %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<% end %>
+
+

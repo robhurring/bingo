@@ -1,0 +1,16 @@
+<div id='card-<%= card.id %>' class='card <%= 'game_over' if game.won? %>'>
+  <% card.size.times do |r| %>
+    <div class='clearfix'>
+      <% card.size.times do |c| %>
+        <div 
+          id='square-<%= '%d-%d' % [r, c] %>' 
+          class='square <%= 'found' if card.has?(r, c) %>' 
+          data='{row: <%= r %>, column: <%= c %>, hash: "<%= hash h(card.at(r, c)) %>"}'>
+            <div class='indicator' style='display:none;'><%= image_tag 'indicator.gif' %></div>
+            <%=h card.at(r, c) %>
+            <div class='users'></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

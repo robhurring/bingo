@@ -1,0 +1,28 @@
+<h2>
+  <%=h game.name %> 
+  <small>(<%=link_to 'view', '/play/%s' % game.token %>)</small>
+</h2>
+
+<p>
+  Started: <strong><%= game.created_at.strftime '%B %d' %></strong><br/>
+  Players: <strong><%= game.cards.size %></strong>
+</p>
+
+<h3>
+  <%= partial :card_name, :card => card %>
+</h3>
+
+<h3>Whos Playing?</h3>
+<ol id='whos_playing'>
+  <% game.cards.each do |card| %>
+    <li id='player-<%= card.id %>'><%=h card.name %></li>
+  <% end %>
+</ol>
+
+<h3>Game Log</h3>
+<div id='message_box'>
+  <div id='message_indicator' style='display:none'><%= image_tag 'indicator-fb.gif' %></div>
+  <input id='send_message' />
+  <div id="messages">  
+  </div>
+</div>

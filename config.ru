@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'bingo'
+require './bingo'
 
 log = ::File.new('log/bingo.log', 'a+')
 STDERR.reopen(log)

@@ -1,4 +1,4 @@
-require 'lib/environment'
+require './lib/environment'
 
 class Bingo < Sinatra::Base
   use ActiveRecord::ConnectionAdapters::ConnectionManagement

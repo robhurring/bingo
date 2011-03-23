@@ -80,7 +80,7 @@ $.extend(
       if(this.settings.game_over)
         return false;
 
-      console.log(this.settings);
+      //console.log(this.settings);
     
       var url = this.game_url(true) + '/change_name';
       var input = $(this.settings.inputs.name);
@@ -130,10 +130,10 @@ $.extend(
     
     user_joined_event: function(data)
     {
-      console.log(data);
+      // console.log(data);
       
       var already_in_list = $('#whos_playing li#player-' + data.id).length > 0
-      console.log("In? " + already_in_list + "\n" + data.name);
+      // console.log("In? " + already_in_list + "\n" + data.name);
       
       if(!already_in_list)
       {

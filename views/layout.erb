@@ -18,7 +18,7 @@
         card: '<%= defined?(@card) ? @card.id : '' %>',
         pusher_key: '<%= options.pusher_key %>',
         name_hash: '<%= defined?(@card) ? hash(h(@card.name)) : '' %>',
-        game_over: <%= defined?(@game) ? @game.won? : '' %>
+        game_over: <%= defined?(@game) ? @game.won? : false %>
       };
     </script>
     <script src="<%= url_for '/js/application.js' %>" type="text/javascript" charset="utf-8"></script>

@@ -1,3 +1,4 @@
 tmp/
 log/
-config/{pusher,database}.yml
+config/database.yml
+config/pusher.yml

@@ -1,3 +1,17 @@
-app_id: APPID
-key: KEY
-secret: SECRET
+development:
+  app_id: 0000
+  app_key: 'keyhere'
+  app_secret: 'secrethere'
+  debug: true
+
+test:
+  app_id:
+  app_key:
+  app_secret:
+  debug: true
+
+production:
+  app_id: <%= ENV['PUSHER_APP_ID'] %>
+  app_key: <%= ENV['PUSHER_APP_KEY'] %>
+  app_secret: <%= ENV['PUSHER_APP_SECRET'] %>
+  debug: false

@@ -1,8 +1,4 @@
-require 'rubygems'
-require './bingo'
+# This file is used by Rack-based servers to start the application.
 
-log = ::File.new('log/bingo.log', 'a+')
-STDERR.reopen(log)
-STDOUT.reopen(log)
-
-run Bingo
+require ::File.expand_path('../config/environment',  __FILE__)
+run Bingoapp::Application

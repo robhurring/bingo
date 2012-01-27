@@ -1,0 +1,28 @@
+<div class='form'>
+  <h2>Create a NEW Game!</h2>
+  <p>You can create a custom Bingo! game to play with your friends!</p>
+    
+  <%= form_for @game do |f| %>
+    <label for="game_name" class='<%= 'with_errors' unless @game.errors[:name].blank? %>'>
+      Game Name<br/>
+      <small>Something memorable :)</small>
+    </label>
+    <input type="text" name="game[name]" value="<%= @game.name %>" id="game_name">
+    <div class='form_error'><%= Array(@game.errors[:name]).join("<br/>") %></div>
+    <br clear='both' />
+    
+    <label for="game_words" class='<%= 'with_errors' unless @game.errors[:words].blank? %>'>
+      Game Words<br/>
+      <small>You need <%= Game::MinimumWords %> words for a game.</small>
+    </label>
+    <textarea name="game[words]" rows="8" class='styled'><%= @game.words.join("\n") %></textarea>
+    <div class='form_error'>
+      <% @game.errors[:words].each do |message, attr| %>
+        <%= message %><br/>
+      <% end %>
+    </div>
+
+    <input type="submit" class='submit' value="Create Game &rarr;">
+    <br clear='both' />
+  <% end %>
+</div>

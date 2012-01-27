@@ -1,18 +1,7 @@
-%w{rubygems benchmark logger yaml pp}.each{ |lib| require lib }
+#!/usr/bin/env rake
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-RakeRoot = File.dirname(__FILE__)
-Log = Logger.new STDOUT
+require File.expand_path('../config/application', __FILE__)
 
-$: << RakeRoot+'/lib'
-
-desc "Bootstraps the environment"
-task :environment do
-  require 'environment'
-end
-
-namespace :db do
-  desc "Migrate the database"  
-  task :migrate => :environment do
-    ActiveRecord::Migrator.migrate(RakeRoot+'/migrations', ENV["VERSION"] ? ENV["VERSION"].to_i : nil )  
-  end  
-end
+Bingoapp::Application.load_tasks

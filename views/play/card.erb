@@ -1,3 +1,0 @@
-<% section(:sidebar){ partial(:sidebar, :game => @game, :card => @card) } %>
-<%= partial :card, :game => @game, :card => @card %>
-<div id='game_over' style='display:<%= 'none' unless @game.won? %>;'><%= "<span>Game won by #{h @game.winner}!</span>" if @game.won? %></div>

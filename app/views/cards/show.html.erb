@@ -1,0 +1,41 @@
+<%= content_for :head do %>
+  <script src="http://js.pusher.com/1.11/pusher.min.js" type="text/javascript"></script>
+  <%= javascript_tag do %>
+    window.PUSHER_KEY = '<%= PusherConfig['app_key'] %>';
+    window.PUSHER_DEBUG = false; //<%= PusherConfig['debug'] %>;
+    window.Card = <%= @card.to_json.html_safe %>;
+  <% end %>
+<% end %>
+
+<%= content_for :sidebar do %>
+  <h2>
+    <%= @game.name %>
+    <small>(<%=link_to 'view', game_path(@game) %>)</small>
+  </h2>
+
+  <p>Started: <%= @game.created_at.strftime '%B %d' %></p>
+
+  <div id='players'>
+    <!-- rendered by PlayersView -->
+  </div>
+<% end %>
+
+<div id='board'>
+  <!-- rendered by BoardView -->
+</div>
+
+<div id='game_over' style='display:<%= 'none' unless @game.won? %>;'><%= "<span>Game won by #{h @game.winner}!</span>" if @game.won? %></div>
+
+<script name='cell-template' type='text/html'>
+<div class='indicator' style='display:none;'>
+  <%= image_tag 'indicator.gif' %>
+</div>
+{{word}}
+<div class='users'></div>
+</script>
+
+<script name='players-template' type='text/html'>
+<h3>Players ({{count}})</h3>
+<ol id='whos_playing'>
+</ol>
+</script>

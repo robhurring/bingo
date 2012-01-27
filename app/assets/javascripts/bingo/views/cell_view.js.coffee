@@ -1,6 +1,6 @@
 # controls the individual cell. it tracks if the cell is highlighted or not, and which users
 # are holding this cell as well as our current user
-window.CellView = Backbone.View.extend
+class window.CellView extends Backbone.View
   className: 'cell'
   events:
     'click': 'clicked'

@@ -1,5 +1,5 @@
 # controls a single row of cells, not entirely useful
-window.RowView = Backbone.View.extend
+class window.RowView extends Backbone.View
   className: 'clearfix'
 
   render: ->

@@ -1,11 +1,11 @@
-window.PlayerView = Backbone.View.extend
+class window.PlayerView extends Backbone.View
   tagName: 'li'
 
   render: ->
     ($ @el).text @model.get('info').name
     @
 
-window.PlayersView = Backbone.View.extend
+class window.PlayersView extends Backbone.View
   tagName: 'div'
 
   initialize: ->

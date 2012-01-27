@@ -1,5 +1,5 @@
 # renders the playing board
-window.BoardView = Backbone.View.extend
+class window.BoardView extends Backbone.View
   className: 'card'
 
   render: ->

@@ -1,8 +1,8 @@
-window.Move = Backbone.Model.extend
+class window.Move extends Backbone.Model
   initialize: ->
     @id = @get 'hash'
 
-window.Moves = Backbone.Collection.extend
+class window.Moves extends Backbone.Collection
   model: Move
   initialize: ->
     @url = "/games/#{Card.game_id}/moves"

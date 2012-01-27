@@ -46,18 +46,14 @@ class CardsController < ApplicationController
     game = Game.find params[:game_id]
     card = game.cards.find params[:id]
 
-    if true
-      response = Pusher[params[:channel_name]].authenticate(params[:socket_id],
-      {
-        :user_id => card.id,
-        :user_info => {
-          :name => card.name
-        }
-      })
+    response = Pusher[params[:channel_name]].authenticate(params[:socket_id],
+    {
+      :user_id => card.id,
+      :user_info => {
+        :name => card.name
+      }
+    })
 
-      render :json => response
-    else
-      render :nothing => true, :status => '403'
-    end
+    render :json => response
   end
 end

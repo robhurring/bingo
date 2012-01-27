@@ -4,7 +4,7 @@ Bingoapp::Application.routes.draw do
   resources :games, only: [:new, :create, :show] do
     resources :cards, :only => [:new, :show] do
       member do
-        put 'clicked', :as => :select
+        put 'clicked'
         post 'join'
       end
     end
